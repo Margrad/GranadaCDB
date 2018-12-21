@@ -1,8 +1,8 @@
 /**
 Defines the functions for the DataBase
-->NewColumn(string*);               //needs further testing -> possible change
-->DeleteColumn(DataBase*);          //needs further testing
-->SequentialEntryDelete(entry*);    //needs further testing
+->NewColumn(string* name, type data_type);          //needs further testing -> possible change
+->DeleteColumn(column*);                            //needs further testing
+->SequentialEntryDelete(entry* column_first_entry); //needs further testing
 **/
 
 
