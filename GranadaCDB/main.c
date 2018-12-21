@@ -5,6 +5,7 @@
 #include "time.h"
 #define DEBUG_STR
 /**
+** This main.c file is used for testing purposes
 ** I need to create the basic structures and functions
 ** I need to make it server/client
 ** I need to make it searchable
