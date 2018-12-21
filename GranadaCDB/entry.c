@@ -1,7 +1,7 @@
 /**
 Defines the functions for the DataBase
-->entry* NewEntry(type,void*);          //needs further testing ->lacks complex recognition
-->void EditEntry(type, entry*,void*);   //needs further testing ->lacks complex recognition
+->entry* NewEntry(type,void* data);          //needs further testing ->lacks complex recognition
+->void EditEntry(type, entry*,void* data);   //needs further testing ->lacks complex recognition
 ->void DeleteEntry(entry*);             //needs further testing
 **/
 #include <time.h>
@@ -21,21 +21,24 @@ void EditEntry(type tipo, entry* Entry, void* data)
     }
     Entry->lock=1;
     timed_entry *temp_Entry;
-    if((temp_Entry=(timed_entry*)malloc(sizeof(timed_entry))) == NULL){
-                    printf("failed to allocate memory for time_entry");
+    if((temp_Entry=(timed_entry*)malloc(sizeof(timed_entry))) == NULL){ // check for failed memory allocation and
+                    printf("failed to allocate memory for time_entry"); // unlocks the entry if it fails
+                    Entry->lock=0;
                     return ;
-            }  //and differential search
+            }  
     switch(tipo){
         case(TEXT):{
             DeleteString(Entry->dif_search);
-            if((Entry->dif_search=(string*)malloc(sizeof(string))) == NULL){
-                    printf("failed to allocate memory for differential string");
+            if((Entry->dif_search=(string*)malloc(sizeof(string))) == NULL){ // check for failed memory allocation and
+                    printf("failed to allocate memory for dif string");      // unlocks the entry if it fails
+                    Entry->lock=0;
                     return ;
-            }  //and differential search
-            temp_Entry->next=Entry->current_entry;
-            Entry->current_entry=temp_Entry;
-            temp_Entry->value=data;             //get data to current_entry->data
-            temp_Entry->change_time=time(NULL);     //get time to current_entry->time
+            } 
+            DeleteString(Entry->dif_search);        // Clear memory from no longuer used strings
+            temp_Entry->next=Entry->current_entry;  // turns the previows latest entry into second entry
+            Entry->current_entry=temp_Entry;        // turns the new entry has the first entry
+            temp_Entry->value=data;              //get the new data to the new entry->data
+            temp_Entry->change_time=time(NULL);  //get time to current_entry->time
             Entry->dif_search=lower_case(data);  //get lower_case to dif_search->data and ignor the remaining sets in this struck
             Entry->lock=0;
             break;
@@ -136,7 +139,7 @@ entry* NewEntry(type tipo, void* data){
             newEntry->lock=0;
             break;
             };
-        default:{printf("Cannot initialize entry:");return 0;};
+        default:{printf("Cannot initialize entry due to unknown type of data:");return 0;};
     }
 return newEntry;
 }
