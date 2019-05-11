@@ -8,8 +8,8 @@
 *.obj
 *.cbp
 *.depend
-bin/*
-obj/*
+GranadaCDB/bin/*
+GranadaCDB/obj/*
 # Precompiled Headers
 *.gch
 *.pch
