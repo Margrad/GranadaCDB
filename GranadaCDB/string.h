@@ -12,4 +12,5 @@ char   compare_strings(string *, string *);
 string* lower_case(string*);
 void DeleteString(string *);
 int getLenght(char *);
+string *copy_string(string *s2);
 #endif
