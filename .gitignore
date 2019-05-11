@@ -8,8 +8,10 @@
 *.obj
 *.cbp
 *.depend
+*.layout
 GranadaCDB/bin/*
 GranadaCDB/obj/*
+
 # Precompiled Headers
 *.gch
 *.pch
