@@ -8,10 +8,6 @@ Defines the functions for the DataBase
 #include <stdio.h>
 #include <stdlib.h>
 #include "DataBase.h"
-//#include <time.h>
-//#include "entry.h"
-//#include "column.h"
-#include "string.h"
 
 DataBase* NewDB(string *name){
     if(name == 0){

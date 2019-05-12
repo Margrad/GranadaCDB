@@ -8,7 +8,7 @@ Defines the functions for the DataBase
 #include "entry.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include "column.h"
+//#include "column.h"
 #include "string.h"
 
 
@@ -25,7 +25,7 @@ void EditEntry(type tipo, entry* Entry, void* data)
                     printf("failed to allocate memory for time_entry"); // unlocks the entry if it fails
                     Entry->lock=0;
                     return ;
-            }  
+            }
     switch(tipo){
         case(TEXT):{
             DeleteString(Entry->dif_search);
@@ -33,7 +33,7 @@ void EditEntry(type tipo, entry* Entry, void* data)
                     printf("failed to allocate memory for dif string");      // unlocks the entry if it fails
                     Entry->lock=0;
                     return ;
-            } 
+            }
             DeleteString(Entry->dif_search);        // Clear memory from no longuer used strings
             temp_Entry->next=Entry->current_entry;  // turns the previows latest entry into second entry
             Entry->current_entry=temp_Entry;        // turns the new entry has the first entry

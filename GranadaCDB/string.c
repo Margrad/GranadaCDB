@@ -16,8 +16,8 @@ checks the length of a string terminated with
 '\0'
 **/
 #include "string.h"
-#include "entry.h"
-#include "column.h"
+//#include "entry.h"
+//#include "column.h"
 #include "DataBase.h"
 #include <stdlib.h>
 #include <stdio.h>

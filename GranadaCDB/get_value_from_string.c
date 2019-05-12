@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "string.h"
 #include "entry.h"
-#include "column.h"
+//#include "column.h"
 #include "DataBase.h"
 
 void* get_value_from_terminal(type tipo)
