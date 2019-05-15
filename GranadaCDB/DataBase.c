@@ -45,6 +45,11 @@ void DeleteDB(DataBase* DB){
 }
 
 void AddTable(DataBase *SourceDB,string * Name){
+    SourceDB->Tables = (Table **) realloc(SourceDB->Tables, sizeof(Table *)*SourceDB->number_of_tables);
+    if(SourceDB->Tables == NULL){
+        printf("Failed to allocate memory for a new table on %s",SourceDB->name->text);
+        return 0;
+    }
     SourceDB->Tables[SourceDB->number_of_tables] = (Table *)malloc(sizeof(Table));
     SourceDB->Tables[SourceDB->number_of_tables]->name=copy_string(Name);
     SourceDB->number_of_tables++;

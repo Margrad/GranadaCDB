@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "DataBase.h"
+#include "string.h"
 #include "time.h"
 #define DEBUG_STR
 /**
@@ -13,6 +14,11 @@
 **/
 
 int main(){
+
+    string* DBName = NewString("DB");
+
+    DataBase* DB=NewDB(DBName);
+
 
 
 

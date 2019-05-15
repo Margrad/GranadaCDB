@@ -73,7 +73,13 @@ void DeleteString(string *s)
     free(s);
 }
 
-
+string* NewString(char *Text)
+{
+    string* newString=(string *)malloc(sizeof(string));
+    newString->text=Text;
+    newString->len=getLenght(Text);
+    return newString;
+}
 /**
 Mini functions
 **/
