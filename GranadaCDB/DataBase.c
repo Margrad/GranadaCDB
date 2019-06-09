@@ -2,8 +2,6 @@
 Defines the functions for the DataBase
 ->NewDB(string*);           //needs further testing RANDOM ISUES solved
 ->DeleteDB(DataBase*);      //needs further testing RANDOM ISUES solved
-->AddColumn();              //needs testing
-->AddRow();                 //not started
 **/
 #include <stdio.h>
 #include <stdlib.h>
@@ -45,12 +43,38 @@ void DeleteDB(DataBase* DB){
 }
 
 void AddTable(DataBase *SourceDB,string * Name){
-    SourceDB->Tables = (Table **) realloc(SourceDB->Tables, sizeof(Table *)*SourceDB->number_of_tables);
+    //check if the Table already exists
+    int numbTabs=SourceDB->number_of_tables;
+    int i=0;
+    for(i=0;i<numbTabs;i++){
+        if(compare_strings(SourceDB->Tables[i]->name,Name)){
+            printf("Table %s already exists. Aborting table creation\n",Name->text);
+            return;
+        }
+      }
+    //
+    if(SourceDB->Tables!= NULL)
+    {
+         SourceDB->Tables = (Table **) realloc(SourceDB->Tables, sizeof(Table *)*(SourceDB->number_of_tables+1));
+    }
+    else
+    {
+        SourceDB->Tables = (Table **) malloc( sizeof(Table *)*(SourceDB->number_of_tables+1));
+    }
     if(SourceDB->Tables == NULL){
         printf("Failed to allocate memory for a new table on %s",SourceDB->name->text);
-        return 0;
+        return;
     }
     SourceDB->Tables[SourceDB->number_of_tables] = (Table *)malloc(sizeof(Table));
     SourceDB->Tables[SourceDB->number_of_tables]->name=copy_string(Name);
     SourceDB->number_of_tables++;
+    printf("%s created sucefully!\n", Name->text);
 }
+
+  void GetTablesNames(DataBase* SourceDB){
+      int numbTabs=SourceDB->number_of_tables;
+      int i=0;
+      for(i=0;i<numbTabs;i++){
+        printf("%s\n",SourceDB->Tables[i]->name->text);
+      }
+  }

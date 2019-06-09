@@ -16,10 +16,16 @@
 int main(){
 
     string* DBName = NewString("DB");
+    string* TableName = NewString("Tabela");
 
     DataBase* DB=NewDB(DBName);
+    AddTable(DB, DBName);
+    AddTable(DB, TableName);
+    AddTable(DB, DBName);
+    AddTable(DB, TableName);
 
 
+    GetTablesNames(DB);
 
 
     return 0;

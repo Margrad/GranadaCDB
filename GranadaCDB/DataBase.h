@@ -1,5 +1,11 @@
 /**
 this header defines a DataBase. The main program will have have a array of this;
+current functions:
+  DataBase* NewDB(string *Name);
+  void AddTable(DataBase *SourceDB, string *Name);
+  void DeleteDB(DataBase*);
+  void GetTablesNames(DataBase*);
+functions to add:
 **/
 
 #ifndef _DATABASE
@@ -16,8 +22,9 @@ typedef struct _db_{
     //column **Columns;          // pointer to  the index column
 } DataBase;
 
-DataBase* NewDB(string *);
-void AddTable(DataBase *SourceDB,string * Name);
+DataBase* NewDB(string *Name);
+void AddTable(DataBase *SourceDB, string *Name);
 void DeleteDB(DataBase*);
+void GetTablesNames(DataBase*);
 
 #endif // _DATABASE
