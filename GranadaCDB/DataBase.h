@@ -6,6 +6,7 @@ current functions:
   void DeleteDB(DataBase*);
   void GetTablesNames(DataBase*);
 functions to add:
+void MoveToTable(DataBase* SourceDB,string * Name);
 **/
 
 #ifndef _DATABASE
@@ -19,6 +20,7 @@ typedef struct _db_{
 
     int number_of_tables;  //
     Table **Tables;
+    Table *CurrentTable;
     //column **Columns;          // pointer to  the index column
 } DataBase;
 
@@ -26,5 +28,6 @@ DataBase* NewDB(string *Name);
 void AddTable(DataBase *SourceDB, string *Name);
 void DeleteDB(DataBase*);
 void GetTablesNames(DataBase*);
+void MoveToTable(DataBase* SourceDB,string * Name);
 
 #endif // _DATABASE

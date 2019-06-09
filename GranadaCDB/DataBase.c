@@ -73,8 +73,27 @@ void AddTable(DataBase *SourceDB,string * Name){
 
   void GetTablesNames(DataBase* SourceDB){
       int numbTabs=SourceDB->number_of_tables;
+      if(numbTabs == 0){
+        printf(">no tables present");
+        return;
+      }
+      printf("Tables present:\n");
       int i=0;
       for(i=0;i<numbTabs;i++){
-        printf("%s\n",SourceDB->Tables[i]->name->text);
+        printf(" %s\n",SourceDB->Tables[i]->name->text);
       }
   }
+
+void MoveToTable(DataBase* SourceDB,string * Name){
+    int numbTabs=SourceDB->number_of_tables;
+    int i=0;
+    for(i=0;i<numbTabs;i++){
+        if(compare_strings(SourceDB->Tables[i]->name,Name)){
+            SourceDB->CurrentTable = SourceDB->Tables[i];
+            printf("Moving to Table %s\n",Name->text);
+            return;
+        }
+      }
+    printf("Cannot find Table %s, current Table doesn't change\n",Name->text);
+    return;
+}

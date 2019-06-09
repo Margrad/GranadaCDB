@@ -19,11 +19,13 @@ int main(){
     string* TableName = NewString("Tabela");
 
     DataBase* DB=NewDB(DBName);
-    AddTable(DB, DBName);
-    AddTable(DB, TableName);
-    AddTable(DB, DBName);
-    AddTable(DB, TableName);
 
+    AddTable(DB, DBName);
+    MoveToTable(DB,TableName);
+    MoveToTable(DB,DBName);
+
+    AddTable(DB, TableName);
+    MoveToTable(DB,TableName);
 
     GetTablesNames(DB);
 
