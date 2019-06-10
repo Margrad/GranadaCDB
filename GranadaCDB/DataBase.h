@@ -14,7 +14,6 @@ void MoveToTable(DataBase* SourceDB,string * Name);
 #include "string.h"
 #include "table.h"
 
-
 typedef struct _db_{
     string *name;            // DB name
 

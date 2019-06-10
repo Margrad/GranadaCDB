@@ -9,19 +9,19 @@ void DeleteTable(Table *table){
     free(table);
 }
 column* NewColumn(string* name, type tipo){
-    if(name == 0){
+    if(name == NULL){
         printf("pointer to name string is null");
         return 0;
     }
     column *new_column;
-    if((new_column=(column *)malloc(sizeof(column))) ==0 )
+    if((new_column=(column *)malloc(sizeof(column))) == NULL )
     {
         printf("Could not allocate memory for the column %s", name->text);
         return 0;
     }
-    new_column->entry0=NULL;
-    new_column->tipo=tipo;
-    new_column->name=copy_string(name);
+    new_column->entry0 = NULL;
+    new_column->tipo = tipo;
+    new_column->name = copy_string(name);
     return new_column;
 }
 
@@ -57,21 +57,45 @@ set number of rows and columns
         printf("Could not allocate memory for the table %s", name->text);
         return 0;
     }
-    new_table->Columns=(column **) malloc(sizeof(column *) *1);
-    column* index = (column *) malloc(sizeof(column ));
 
+    new_table->Columns=(column **) malloc(sizeof(column *) *1);
+
+    // Set index
+    string *ID = NewString("ID");
+    column* index = NewColumn(ID,INTERGER);//(column *) malloc(sizeof(column ));
+    DeleteString(ID);
+
+    //check for empty pointers
     if ( new_table->Columns == NULL || index == NULL){
             free(new_table->Columns);
-            free(index);
+            DeleteColumn(index);
             free(new_table);
             printf("Failed to allocate memory for initial index Columns of %s", name->text);
             return 0;
     }
 
+    //set tables name
+    new_table->name=copy_string(name);
+
+    //Set index to the first column
     new_table->Columns[0]=index;
 
-    new_table->number_of_columns=0;
+    new_table->number_of_columns=1;
     new_table->number_of_rows=0;
 
     return new_table;
+}
+
+
+void CheckColumnsNames(Table *table){
+      int numbCols=table->number_of_columns;
+      if(numbCols == 0){
+        printf(">no columns present-> should have at least ID.\n");
+        return;
+      }
+      printf("Columns present:\n");
+      int i=0;
+      for(i=0;i<numbCols;i++){
+        printf(" %s\n",table->Columns[i]->name->text);
+      }
 }

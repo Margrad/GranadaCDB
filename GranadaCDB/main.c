@@ -20,14 +20,14 @@ int main(){
 
     DataBase* DB=NewDB(DBName);
 
+    AddTable(DB, TableName);
     AddTable(DB, DBName);
     MoveToTable(DB,TableName);
-    MoveToTable(DB,DBName);
 
-    AddTable(DB, TableName);
-    MoveToTable(DB,TableName);
 
-    GetTablesNames(DB);
+
+    CheckColumnsNames(DB->CurrentTable);
+
 
 
     return 0;

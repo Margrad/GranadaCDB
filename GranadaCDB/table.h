@@ -1,4 +1,12 @@
 /***
+Currently have:
+    column* NewColumn(string* name,type tipo);
+    void DeleteColumn(column*);
+    void SequentialEntryDelete(entry *entry0);
+    Table * NewTable(string * name);
+    void DeleteTable(Table *table);
+Currently needs:
+    void CheckColumnsNames(Table *table);
 Must have a
 name
 arrey to all columns
@@ -35,7 +43,7 @@ void DeleteColumn(column*);
 void SequentialEntryDelete(entry *entry0);
 
 Table * NewTable(string * name);
-
-
+void CheckColumnsNames(Table *table);
 void DeleteTable(Table *table);
+
 #endif //_TABLE

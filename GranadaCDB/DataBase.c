@@ -65,8 +65,8 @@ void AddTable(DataBase *SourceDB,string * Name){
         printf("Failed to allocate memory for a new table on %s",SourceDB->name->text);
         return;
     }
-    SourceDB->Tables[SourceDB->number_of_tables] = (Table *)malloc(sizeof(Table));
-    SourceDB->Tables[SourceDB->number_of_tables]->name=copy_string(Name);
+    SourceDB->Tables[SourceDB->number_of_tables] = NewTable(copy_string(Name));//(Table *)malloc(sizeof(Table));
+    //SourceDB->Tables[SourceDB->number_of_tables]->name=copy_string(Name);
     SourceDB->number_of_tables++;
     printf("%s created sucefully!\n", Name->text);
 }
