@@ -73,7 +73,7 @@ entry* NewEntry(type tipo, void* data){
             case(TEXT):{
                 newEntry->current_entry=(timed_entry*)malloc(sizeof(timed_entry));//allocate memory for current entry
                 newEntry->dif_search=NULL;  //and differential search
-                newEntry->next_entry=NULL;
+//                newEntry->next_entry=NULL;
                 temp_Entry = newEntry->current_entry;    //get time to current_entry->time
                 temp_Entry->next = NULL;         //get lower_case to dif_search->data and ignor the remaining sets in this struck
                 newEntry->lock=0;
@@ -84,7 +84,7 @@ entry* NewEntry(type tipo, void* data){
                 newEntry->dif_search=NULL;  //intergers are nod differentiated
                 temp_Entry = newEntry->current_entry;
                 temp_Entry->value=NULL;     //get time to current_entry->time
-                temp_Entry->next = NULL;               //set current_entry->next to void
+ //               temp_Entry->next = NULL;               //set current_entry->next to void
                 newEntry->lock=0;
                 break;
                 };
@@ -94,7 +94,7 @@ entry* NewEntry(type tipo, void* data){
                 temp_Entry = newEntry->current_entry;
                 temp_Entry->value=NULL;             //get data to current_entry->data
                 temp_Entry->change_time=time(NULL);     //get time to current_entry->time
-                temp_Entry->next = NULL;               //set current_entry->next to void
+ //               temp_Entry->next = NULL;               //set current_entry->next to void
                 newEntry->lock=0;
                 break;
                 };
@@ -106,11 +106,11 @@ entry* NewEntry(type tipo, void* data){
         case(TEXT):{
             newEntry->current_entry=(timed_entry*)malloc(sizeof(timed_entry));//allocate memory for current entry
             newEntry->dif_search=(string*)malloc(sizeof(string));  //and differential search
-            newEntry->next_entry=NULL;
+//            newEntry->next_entry=NULL;
             temp_Entry = newEntry->current_entry;
             temp_Entry->value=copy_string(data);             //get data to current_entry->data
             temp_Entry->change_time=time(NULL);     //get time to current_entry->time
-            temp_Entry->next = NULL;               //set current_entry->next to void
+ //           temp_Entry->next = NULL;               //set current_entry->next to void
             newEntry->dif_search=lower_case(data);  //get lower_case to dif_search->data and ignor the remaining sets in this struck
             newEntry->lock=0;
             break;
@@ -123,7 +123,7 @@ entry* NewEntry(type tipo, void* data){
             *ptr_data=*(int *)data;
             temp_Entry->value=ptr_data;             //get data to current_entry->data
             temp_Entry->change_time=time(NULL);     //get time to current_entry->time
-            temp_Entry->next = NULL;               //set current_entry->next to void
+ //           temp_Entry->next = NULL;               //set current_entry->next to void
             newEntry->lock=0;
             break;
             };
@@ -135,7 +135,7 @@ entry* NewEntry(type tipo, void* data){
             *ptr_data=*(double *)data;
             temp_Entry->value=ptr_data;             //get data to current_entry->data
             temp_Entry->change_time=time(NULL);     //get time to current_entry->time
-            temp_Entry->next = NULL;               //set current_entry->next to void
+ //           temp_Entry->next = NULL;               //set current_entry->next to void
             newEntry->lock=0;
             break;
             };

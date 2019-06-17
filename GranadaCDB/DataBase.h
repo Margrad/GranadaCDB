@@ -1,12 +1,12 @@
 /**
 this header defines a DataBase. The main program will have have a array of this;
 current functions:
-  DataBase* NewDB(string *Name);
-  void AddTable(DataBase *SourceDB, string *Name);
-  void DeleteDB(DataBase*);
-  void GetTablesNames(DataBase*);
+    DataBase* NewDB(string *Name);
+    void AddTable(DataBase *SourceDB, string *Name);
+    void DeleteDB(DataBase*);
+    void GetTablesNames(DataBase*);
+    void MoveToTable(DataBase* SourceDB,string * Name);
 functions to add:
-void MoveToTable(DataBase* SourceDB,string * Name);
 **/
 
 #ifndef _DATABASE
