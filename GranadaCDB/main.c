@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "DataBase.h"
 #include "string.h"
+#include "list.h"
 #include "time.h"
 #define DEBUG_STR
 /**
@@ -30,6 +31,8 @@ int main(){
     AddColumn(DB->CurrentTable,ColumnName1, TEXT);
 
     CheckColumnsNames(DB->CurrentTable);
+
+
 
     AddRow(DB->CurrentTable);
     AddRow(DB->CurrentTable);
