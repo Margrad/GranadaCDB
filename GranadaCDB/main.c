@@ -40,6 +40,5 @@ int main(){
 
     CheckColumnsNames(DB->CurrentTable);
 
-
     return 0;
 }

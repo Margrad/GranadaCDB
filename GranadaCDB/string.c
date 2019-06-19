@@ -1,20 +1,4 @@
-/**
-Defines the functions for the string
-->string* lower_case(string* old_text)          //needs further testing
-returns the address of a lower case version of
-the input string
-->char compare_strings(string *s1, string *s2); //needs further testing
-compares two string to see if they are the same
-returns 1 if they are or zero otherwise
-->string* newString(char *text, int len)        //needs further testing
-returns the address to a new string of lenght
-len and pointing to text (!!!!! UNUSED? !!!!!)
-->void DeleteString(string *s)                  //needs further testing
-frees the memory for a string  s
-->int getLenght(char *text)                     //needs further testing
-checks the length of a string terminated with
-'\0'
-**/
+
 #include "string.h"
 //#include "entry.h"
 //#include "column.h"
@@ -88,4 +72,23 @@ int i=0;
 while(text[i]!='\0')
     i++;
 return i+1;
+}
+int string_has_string(string* a, string* b){
+    if (b->len > a->len){
+        return 0;
+    }
+    int i,j;
+    for(i = 0; i < (a->len-b->len) ; i++){
+        if(a->text[i] == b->text[0]){
+            for(j=1 ; j<b->len; j++){
+                if(b->text[j] == '\0')
+                    return 1;
+                if(a->text[i+j] == b->text[j])
+                    continue;
+                else
+                    break;
+            }
+        }
+    }
+    return 0;
 }
