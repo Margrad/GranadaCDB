@@ -5,6 +5,7 @@
 #include "string.h"
 #include "list.h"
 #include "time.h"
+#include "search.h"
 #define DEBUG_STR
 /**
 ** This main.c file is used for testing purposes

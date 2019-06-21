@@ -20,4 +20,4 @@ typedef struct _LIST_{
 void add_to_list( list* lista, int value);
 list* NewList();
 
-#endif
+#endif //LISTA
