@@ -46,7 +46,10 @@ void EditEntry(type tipo, entry* Entry, void* data)
         case(INTERGER):{
             temp_Entry->next=Entry->current_entry;
             Entry->current_entry=temp_Entry;
-            temp_Entry->value=data;             //get data to current_entry->data
+
+            temp_Entry->value=(int *)malloc(sizeof(int));
+            int * value = (int *)temp_Entry->value;
+            *value = *(int *)data;                    //get data to current_entry->data
             temp_Entry->change_time=time(NULL);     //get time to current_entry->time
             Entry->lock=0;
             break;
@@ -54,8 +57,10 @@ void EditEntry(type tipo, entry* Entry, void* data)
         case(REAL):{
             temp_Entry->next=Entry->current_entry;
             Entry->current_entry=temp_Entry;
-            temp_Entry->value=data;             //get data to current_entry->data
-            temp_Entry->change_time=time(NULL);     //get time to current_entry->time
+            temp_Entry->value=(double *)malloc(sizeof(double));
+            double * value = (double *)temp_Entry->value;
+            *value = *(double *)data;                //get data to current_entry->data
+            temp_Entry->change_time=time(NULL);      //get time to current_entry->time
             Entry->lock=0;
             break;
             };

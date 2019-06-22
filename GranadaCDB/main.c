@@ -19,9 +19,8 @@ int main(){
 
     string* DBName = NewString("DB");
     string* TableName = NewString("Tabela");
-    string* ColumnName1 = NewString("Column1");
-    string* ColumnName2 = NewString("Column2");
-    string* ColumnName3 = NewString("Column3");
+    string* ColumnName1 = NewString("Idade");
+
 
     DataBase* DB=NewDB(DBName);
 
@@ -29,20 +28,32 @@ int main(){
     MoveToTable(DB,TableName);
 
     CheckColumnsNames(DB->CurrentTable);
-    AddColumn(DB->CurrentTable,ColumnName1, TEXT);
-
-    CheckColumnsNames(DB->CurrentTable);
-
-
-
+    AddColumn(DB->CurrentTable, ColumnName1, INTERGER);
     AddRow(DB->CurrentTable);
     AddRow(DB->CurrentTable);
     AddRow(DB->CurrentTable);
     AddRow(DB->CurrentTable);
-    AddColumn(DB->CurrentTable,ColumnName2, INTERGER);
-    AddColumn(DB->CurrentTable,ColumnName3, REAL);
+    AddRow(DB->CurrentTable);
 
-    CheckColumnsNames(DB->CurrentTable);
+    int tet = 123;
+    EditEntry(INTERGER,DB->CurrentTable->Columns[1]->entries[0],&tet);
+    EditEntry(INTERGER,DB->CurrentTable->Columns[1]->entries[2],&tet);
+    EditEntry(INTERGER,DB->CurrentTable->Columns[1]->entries[3],&tet);
+    EditEntry(INTERGER,DB->CurrentTable->Columns[1]->entries[4],&tet);
+    tet = 321;
+    EditEntry(INTERGER,DB->CurrentTable->Columns[1]->entries[1],&tet);
+    printf("populated table\n");
+
+    int toFind = 123;
+    list *Found = ColumnSearch(DB->CurrentTable->Columns[1],&toFind,DEFAULT);
+
+    printf("Found the values in: ");
+    Node *node = Found->head;
+    while(node != NULL){
+        printf("%d ",node->value,node->next);
+        node=node->next;
+    }
+
 
     return 0;
 }

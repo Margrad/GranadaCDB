@@ -10,7 +10,7 @@ typedef enum {TEXT, INTERGER, REAL} type;
 
 typedef struct _timed_entry_{
     time_t change_time;         // time when this entry was created
-    struct _timed_entry_ *next;                 // previows entry from this entry(null will be the first created)
+    struct _timed_entry_ *next; // previows entry from this entry(null will be the first created)
     void *value;                // actual value in this timed_entry
 } timed_entry;
 

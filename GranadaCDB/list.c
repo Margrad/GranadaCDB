@@ -6,6 +6,8 @@ void add_to_list( list* lista, int value){
     new_node->next=NULL;
     if(lista->head == NULL)
         lista->head = new_node;
+    if(lista->tail != NULL)
+        lista->tail->next=new_node;
     lista->tail=new_node;
 }
 
