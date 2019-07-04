@@ -24,4 +24,5 @@ typedef struct _Entry_{
 entry* NewEntry(type tipo, void* data);
 void EditEntry(type,entry*,void*);
 void DeleteEntry(entry *Entry);
+
 #endif // _ENTRY

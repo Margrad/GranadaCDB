@@ -109,7 +109,7 @@ void AddColumn(Table *table, string *name, type Tipo){
     int i=0;
     // first check if the column name already exists
     for(i = 0; i<table->number_of_columns;i++){
-        if(compare_strings(name,table->Columns[i]->name))
+        if(bcompare_strings(name,table->Columns[i]->name))
             {
                 printf("%s already exist at %s\n",name->text,table->name->text);
                 return;

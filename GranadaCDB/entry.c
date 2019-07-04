@@ -39,7 +39,7 @@ void EditEntry(type tipo, entry* Entry, void* data)
             Entry->current_entry=temp_Entry;        // turns the new entry has the first entry
             temp_Entry->value=data;              //get the new data to the new entry->data
             temp_Entry->change_time=time(NULL);  //get time to current_entry->time
-            Entry->dif_search=lower_case(data);  //get lower_case to dif_search->data and ignor the remaining sets in this struck
+            Entry->dif_search=to_lower_case(data);  //get lower_case to dif_search->data and ignor the remaining sets in this struck
             Entry->lock=0;
             break;
         };
@@ -116,7 +116,7 @@ entry* NewEntry(type tipo, void* data){
             temp_Entry->value=copy_string(data);             //get data to current_entry->data
             temp_Entry->change_time=time(NULL);     //get time to current_entry->time
  //           temp_Entry->next = NULL;               //set current_entry->next to void
-            newEntry->dif_search=lower_case(data);  //get lower_case to dif_search->data and ignor the remaining sets in this struck
+            newEntry->dif_search=to_lower_case(data);  //get lower_case to dif_search->data and ignor the remaining sets in this struck
             newEntry->lock=0;
             break;
         };

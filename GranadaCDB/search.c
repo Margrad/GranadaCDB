@@ -123,19 +123,82 @@ switch(Column->tipo){
                     case(DEFAULT):{} // Same as PARTIAL
                     case(PARTIAL):
                         {
-
+                            // Remove case sensitive
+                            // cycle the column and find stuff
+                            string* searched_text = to_lower_case((string *)data);
+                            for(i=0;i<Column->number_of_entries;i++)
+                                {
+                                   if ( Column->entries[i]->current_entry->value == NULL)
+                                        {
+                                            continue;
+                                        }
+                                    string* current_string= (string *)Column->entries[i]->dif_search;
+                                    if( bstring_has_string(current_string , searched_text))
+                                    {
+                                         add_to_list(PossitiveResults,i);
+                                    }
+                                }
+                            DeleteString(searched_text);
+                            return PossitiveResults;
                         }
                     case(HISTORIC):
                         {
-
+                            string* searched_text = (string *)data;
+                            for(i=0;i<Column->number_of_entries;i++)
+                                {
+                                    timed_entry * current_entry = Column->entries[i]->current_entry;
+                                    while (current_entry != NULL)
+                                        {
+                                        if ( Column->entries[i]->current_entry->value == NULL)
+                                            {
+                                                continue;
+                                            }
+                                            string* current_text = (string *)current_entry->value;
+                                            if( bstring_has_string(current_text, searched_text))
+                                                {
+                                                     add_to_list(PossitiveResults,i);
+                                                     break;
+                                                }
+                                            current_entry=current_entry->next;
+                                        }
+                                }
+                            return PossitiveResults;
                         }
                     case(ABSOLUTE):
                         {
-
+                            string* searched_text = (string *)data;
+                            for(i=0;i<Column->number_of_entries;i++)
+                                {
+                                   if ( Column->entries[i]->current_entry->value == NULL)
+                                        {
+                                            continue;
+                                        }
+                                    string* current_string= (string *)Column->entries[i]->current_entry->value;
+                                    if( bcompare_strings(current_string , searched_text))
+                                    {
+                                         add_to_list(PossitiveResults,i);
+                                    }
+                                }
+                            DeleteString(searched_text);
+                            return PossitiveResults;
                         }
                     case(CASE_SENSITIVE):
                         {
-
+                            string* searched_text = (string *)data;
+                            for(i=0;i<Column->number_of_entries;i++)
+                                {
+                                   if ( Column->entries[i]->current_entry->value == NULL)
+                                        {
+                                            continue;
+                                        }
+                                    string* current_string= (string *)Column->entries[i]->current_entry->value;
+                                    if( bstring_has_string(current_string , searched_text))
+                                    {
+                                         add_to_list(PossitiveResults,i);
+                                    }
+                                }
+                            DeleteString(searched_text);
+                            return PossitiveResults;
                         }
                 }
         }

@@ -1,12 +1,8 @@
-
 #include "string.h"
-//#include "entry.h"
-//#include "column.h"
-#include "DataBase.h"
 #include <stdlib.h>
 #include <stdio.h>
 
-string* lower_case(string* old_text){
+string* to_lower_case(string* old_text){
     int i;
     char dif='a'-'A';
     string *new_text;
@@ -22,7 +18,7 @@ string* lower_case(string* old_text){
     return new_text;
 }
 
-char compare_strings(string *s1, string *s2){
+int bcompare_strings(string *s1, string *s2){
     int i,len;
     if(s1->len != s2->len) return 0;
     for (i=0,len=s1->len;i<len;i++)
@@ -73,7 +69,7 @@ while(text[i]!='\0')
     i++;
 return i+1;
 }
-int string_has_string(string* a, string* b){
+int bstring_has_string(string* a, string* b){
     if (b->len > a->len){
         return 0;
     }

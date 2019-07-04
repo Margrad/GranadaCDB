@@ -47,7 +47,7 @@ void AddTable(DataBase *SourceDB,string * Name){
     int numbTabs=SourceDB->number_of_tables;
     int i=0;
     for(i=0;i<numbTabs;i++){
-        if(compare_strings(SourceDB->Tables[i]->name,Name)){
+        if(bcompare_strings(SourceDB->Tables[i]->name,Name)){
             printf("Table %s already exists. Aborting table creation\n",Name->text);
             return;
         }
@@ -88,7 +88,7 @@ void MoveToTable(DataBase* SourceDB,string * Name){
     int numbTabs=SourceDB->number_of_tables;
     int i=0;
     for(i=0;i<numbTabs;i++){
-        if(compare_strings(SourceDB->Tables[i]->name,Name)){
+        if(bcompare_strings(SourceDB->Tables[i]->name,Name)){
             SourceDB->CurrentTable = SourceDB->Tables[i];
             printf("Moving to Table %s\n",Name->text);
             return;

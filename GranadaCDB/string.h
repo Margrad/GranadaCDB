@@ -23,10 +23,12 @@ int len;
 
 
 string* NewString(char*);
-char   compare_strings(string *, string *);
-string* lower_case(string*);
 void DeleteString(string *);
 int getLenght(char *);
+
+int   bcompare_strings(string *, string *);
+int bstring_has_string(string* a, string* b);
+string* to_lower_case(string*);
 string *copy_string(string *s2);
-int string_has_string(string* a, string* b);
+
 #endif

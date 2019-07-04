@@ -48,12 +48,9 @@ int main(){
     list *Found = ColumnSearch(DB->CurrentTable->Columns[1],&toFind,DEFAULT);
 
     printf("Found the values in: ");
-    Node *node = Found->head;
-    while(node != NULL){
-        printf("%d ",node->value,node->next);
-        node=node->next;
+    FOREACH(nodezsdf,Found){
+        printf("%d ",nodezsdf->value);
     }
-
 
     return 0;
 }

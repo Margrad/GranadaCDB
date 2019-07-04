@@ -6,6 +6,9 @@
 #include <stdio.h>
 #ifndef LISTA
 #define LISTA
+#define FOREACH(node_,lista) \
+        for(Node* node_=lista->head;node_!=NULL;node_=node_->next)
+
 
 typedef struct _NODE_{
     int value;
@@ -17,7 +20,8 @@ typedef struct _LIST_{
      Node* tail;
 }list;
 
-void add_to_list( list* lista, int value);
 list* NewList();
+
+void add_to_list( list* lista, int value);
 
 #endif //LISTA
