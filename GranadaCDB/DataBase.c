@@ -6,6 +6,7 @@ Defines the functions for the DataBase
 #include <stdio.h>
 #include <stdlib.h>
 #include "DataBase.h"
+#include "codify.h"
 
 DataBase* NewDB(string *name){
     if(name == 0){
