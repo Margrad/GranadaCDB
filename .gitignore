@@ -9,8 +9,11 @@
 *.cbp
 *.depend
 *.layout
+*.gcdb
 GranadaCDB/bin/*
 GranadaCDB/obj/*
+
+
 
 # Precompiled Headers
 *.gch

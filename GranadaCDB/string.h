@@ -31,4 +31,6 @@ int bstring_has_string(string* a, string* b);
 string* to_lower_case(string*);
 string *copy_string(string *s2);
 
+string* concat_strings(string* a, string* b);
+
 #endif

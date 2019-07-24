@@ -60,6 +60,26 @@ string* NewString(char *Text)
     newString->len=getLenght(Text);
     return newString;
 }
+
+string* concat_strings(string* a, string* b){
+    char* new_text=(char *)malloc(sizeof(char)*(a->len+b->len+1));
+    int i=0;
+    while(a->text[i]!='\0'){
+        new_text[i]=a->text[i];
+        i++;
+    }
+    int j=0;
+    while(b->text[j]!='\0'){
+        new_text[i]=b->text[j];
+        i++;
+        j++;
+    }
+    new_text[i]='\0';
+
+    return NewString(new_text);
+}
+
+
 /**
 Mini functions
 **/

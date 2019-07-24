@@ -20,6 +20,9 @@ int main(){
     string* DBName = NewString("DB");
     string* TableName = NewString("Tabela");
     string* ColumnName1 = NewString("Idade");
+    string* ColumnName2 = NewString("Textes");
+
+
 
 
     DataBase* DB=NewDB(DBName);
@@ -29,6 +32,8 @@ int main(){
 
     CheckColumnsNames(DB->CurrentTable);
     AddColumn(DB->CurrentTable, ColumnName1, INTERGER);
+    AddColumn(DB->CurrentTable, ColumnName2, TEXT);
+
     AddRow(DB->CurrentTable);
     AddRow(DB->CurrentTable);
     AddRow(DB->CurrentTable);
@@ -36,6 +41,7 @@ int main(){
     AddRow(DB->CurrentTable);
 
     int tet = 123;
+
     EditEntry(INTERGER,DB->CurrentTable->Columns[1]->entries[0],&tet);
     EditEntry(INTERGER,DB->CurrentTable->Columns[1]->entries[2],&tet);
     EditEntry(INTERGER,DB->CurrentTable->Columns[1]->entries[3],&tet);
@@ -52,5 +58,23 @@ int main(){
         printf("%d ",nodezsdf->value);
     }
 
+
+
+
+    string* texto_para_db1=NewString("Data de teste1");
+    string* texto_para_db2=NewString("Data de teste2");
+    EditEntry(INTERGER,DB->CurrentTable->Columns[2]->entries[0],texto_para_db1);
+    EditEntry(INTERGER,DB->CurrentTable->Columns[2]->entries[1],texto_para_db1);
+    EditEntry(INTERGER,DB->CurrentTable->Columns[2]->entries[2],texto_para_db1);
+    EditEntry(INTERGER,DB->CurrentTable->Columns[2]->entries[3],texto_para_db1);
+    EditEntry(INTERGER,DB->CurrentTable->Columns[2]->entries[4],texto_para_db1);
+
+    EditEntry(INTERGER,DB->CurrentTable->Columns[2]->entries[0],texto_para_db2);
+    EditEntry(INTERGER,DB->CurrentTable->Columns[2]->entries[1],texto_para_db2);
+    EditEntry(INTERGER,DB->CurrentTable->Columns[2]->entries[2],texto_para_db2);
+    EditEntry(INTERGER,DB->CurrentTable->Columns[2]->entries[3],texto_para_db2);
+    EditEntry(INTERGER,DB->CurrentTable->Columns[2]->entries[4],texto_para_db2);
+    printf("\nSaving column: %s\n",DB->CurrentTable->Columns[2]->name->text);
+    save_column_to_hd(DB->CurrentTable->Columns[2]);
     return 0;
 }

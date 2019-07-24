@@ -26,6 +26,10 @@ void EditEntry(type tipo, entry* Entry, void* data)
                     Entry->lock=0;
                     return ;
             }
+    if(Entry->current_entry->value==NULL){
+        Entry->current_entry->next = NULL;
+    }
+
     switch(tipo){
         case(TEXT):{
             DeleteString(Entry->dif_search);
