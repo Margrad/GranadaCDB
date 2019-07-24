@@ -36,13 +36,6 @@ void DeleteColumn(column* Coluna){
     if(Coluna!=0)
         free(Coluna);
 }
-/*
-void SequentialEntryDelete(entry *entry0){
-    if(entry0->next_entry !=0)
-        SequentialEntryDelete(entry0->next_entry);
-    DeleteEntry(entry0);
-}*/
-
 
 Table * NewTable(string * name){
 /*

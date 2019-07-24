@@ -14,6 +14,10 @@ Defines the functions for the DataBase
 
 void EditEntry(type tipo, entry* Entry, void* data)
 {
+    /***
+    Creates a new_timed_entry with the new data and makes it the current entry,
+    while pointing the new_timed_entry->next the previous entry
+    ***/
     if(Entry->lock == 1)
     {
         printf("Entry currently locked, please try again later");

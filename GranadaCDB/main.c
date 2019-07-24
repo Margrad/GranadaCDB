@@ -75,6 +75,15 @@ int main(){
     EditEntry(INTERGER,DB->CurrentTable->Columns[2]->entries[3],texto_para_db2);
     EditEntry(INTERGER,DB->CurrentTable->Columns[2]->entries[4],texto_para_db2);
     printf("\nSaving column: %s\n",DB->CurrentTable->Columns[2]->name->text);
+
+    printf("\nentry: %d\n",DB->CurrentTable->Columns[2]->entries[0]->current_entry);
+    printf("\ndata: %d\n",DB->CurrentTable->Columns[2]->entries[0]->current_entry->value);
+    printf("\nentry: %d\n",DB->CurrentTable->Columns[2]->entries[0]->current_entry->next);
+    printf("\ndata: %d\n",DB->CurrentTable->Columns[2]->entries[0]->current_entry->next->value);
+    printf("\nSaving column: %d\n",DB->CurrentTable->Columns[2]->entries[0]->current_entry->next->next);
+    printf("\nSaving column: %d\n",DB->CurrentTable->Columns[2]->entries[0]->current_entry->next->next->next);
+
+
     save_column_to_hd(DB->CurrentTable->Columns[2]);
     return 0;
 }

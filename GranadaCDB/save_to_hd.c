@@ -31,22 +31,22 @@ switch (Col_to_save->tipo) {
     case (TEXT):{
         printf("number of entries: %d\n",Col_to_save->number_of_entries);
         for(i=0;i<Col_to_save->number_of_entries;i++){
-            printf("current entry: %d",i);
-            printf(":");
-            fprintf(savefile,":");
+            printf("current entry: %d\n",i);
             timed_entry* current_entry=Col_to_save->entries[i]->current_entry;
             while(current_entry!=NULL){
                 printf(":");
                 fprintf(savefile,":");
                 string *data=(string *)current_entry->value;
-                printf(data->text);
-                fprintf(savefile,data->text);
-                printf(":");
-                fprintf(savefile,":");
-                printf("%d",current_entry->change_time);
-                fprintf(savefile,"%d",current_entry->change_time);
+                if(data != NULL){
+                    printf(data->text);
+                    fprintf(savefile,data->text);
+                    printf(":");
+                    fprintf(savefile,":");
+                    printf("%d",current_entry->change_time);
+                    fprintf(savefile,"%d",current_entry->change_time);
+                    }
                 current_entry=current_entry->next;
-                printf("\n%d\n",current_entry);
+                printf("\n");
             }
         }
         break;
