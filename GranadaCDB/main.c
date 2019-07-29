@@ -20,8 +20,7 @@ int main(){
     string* DBName = NewString("DB");
     string* TableName = NewString("Tabela");
     string* ColumnName1 = NewString("Idade");
-    string* ColumnName2 = NewString("Textes");
-
+    string* ColumnName2 = NewString("Texts");
 
 
 
@@ -37,15 +36,11 @@ int main(){
     AddRow(DB->CurrentTable);
     AddRow(DB->CurrentTable);
     AddRow(DB->CurrentTable);
-    AddRow(DB->CurrentTable);
-    AddRow(DB->CurrentTable);
 
     int tet = 123;
 
     EditEntry(INTERGER,DB->CurrentTable->Columns[1]->entries[0],&tet);
     EditEntry(INTERGER,DB->CurrentTable->Columns[1]->entries[2],&tet);
-    EditEntry(INTERGER,DB->CurrentTable->Columns[1]->entries[3],&tet);
-    EditEntry(INTERGER,DB->CurrentTable->Columns[1]->entries[4],&tet);
     tet = 321;
     EditEntry(INTERGER,DB->CurrentTable->Columns[1]->entries[1],&tet);
     printf("populated table\n");
@@ -66,23 +61,11 @@ int main(){
     EditEntry(INTERGER,DB->CurrentTable->Columns[2]->entries[0],texto_para_db1);
     EditEntry(INTERGER,DB->CurrentTable->Columns[2]->entries[1],texto_para_db1);
     EditEntry(INTERGER,DB->CurrentTable->Columns[2]->entries[2],texto_para_db1);
-    EditEntry(INTERGER,DB->CurrentTable->Columns[2]->entries[3],texto_para_db1);
-    EditEntry(INTERGER,DB->CurrentTable->Columns[2]->entries[4],texto_para_db1);
 
     EditEntry(INTERGER,DB->CurrentTable->Columns[2]->entries[0],texto_para_db2);
     EditEntry(INTERGER,DB->CurrentTable->Columns[2]->entries[1],texto_para_db2);
     EditEntry(INTERGER,DB->CurrentTable->Columns[2]->entries[2],texto_para_db2);
-    EditEntry(INTERGER,DB->CurrentTable->Columns[2]->entries[3],texto_para_db2);
-    EditEntry(INTERGER,DB->CurrentTable->Columns[2]->entries[4],texto_para_db2);
     printf("\nSaving column: %s\n",DB->CurrentTable->Columns[2]->name->text);
-
-    printf("\nentry: %d\n",DB->CurrentTable->Columns[2]->entries[0]->current_entry);
-    printf("\ndata: %d\n",DB->CurrentTable->Columns[2]->entries[0]->current_entry->value);
-    printf("\nentry: %d\n",DB->CurrentTable->Columns[2]->entries[0]->current_entry->next);
-    printf("\ndata: %d\n",DB->CurrentTable->Columns[2]->entries[0]->current_entry->next->value);
-    printf("\nSaving column: %d\n",DB->CurrentTable->Columns[2]->entries[0]->current_entry->next->next);
-    printf("\nSaving column: %d\n",DB->CurrentTable->Columns[2]->entries[0]->current_entry->next->next->next);
-
 
     save_column_to_hd(DB->CurrentTable->Columns[2]);
     return 0;

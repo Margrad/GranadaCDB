@@ -1,5 +1,5 @@
 #include "save_to_hd.h"
-
+#include "tiny_support.h"
 
 int save_db_to_hd(DataBase* DB){
 /**
@@ -22,33 +22,37 @@ save the column in a file with column name has it's name
 int i;
 FILE* savefile;
 
-string* FileName=concat_strings(Col_to_save->name,NewString(".gcdb"));
-
+string* FileName=concat_strings(Col_to_save->name,NewString(".colgcdb"));
 savefile = fopen(FileName->text,"wb");
 
+string* text_to_save1 = NewString("");
+string* text_to_save2;
 
 switch (Col_to_save->tipo) {
     case (TEXT):{
-        printf("number of entries: %d\n",Col_to_save->number_of_entries);
         for(i=0;i<Col_to_save->number_of_entries;i++){
-            printf("current entry: %d\n",i);
-            timed_entry* current_entry=Col_to_save->entries[i]->current_entry;
-            while(current_entry!=NULL){
-                printf(":");
-                fprintf(savefile,":");
-                string *data=(string *)current_entry->value;
-                if(data != NULL){
-                    printf(data->text);
-                    fprintf(savefile,data->text);
-                    printf(":");
-                    fprintf(savefile,":");
-                    printf("%d",current_entry->change_time);
-                    fprintf(savefile,"%d",current_entry->change_time);
-                    }
-                current_entry=current_entry->next;
-                printf("\n");
+                timed_entry* current_entry=Col_to_save->entries[i]->current_entry;
+                while(current_entry!=NULL){
+                    text_to_save2=concat_strings(text_to_save1,NewString(":"));
+                    DeleteString(text_to_save1);
+                    text_to_save1=text_to_save2;
+                    string *data=(string *)current_entry->value;
+
+                    if(data != NULL){
+                        text_to_save2=concat_strings(text_to_save1,NewString(data->text));
+                        DeleteString(text_to_save1);
+                        text_to_save1=text_to_save2;
+                        text_to_save2=concat_strings(text_to_save1,NewString(":"));
+                        DeleteString(text_to_save1);
+                        text_to_save1=text_to_save2;
+                        text_to_save2=concat_strings(text_to_save1,convert_time_to_String(current_entry->change_time));
+                        DeleteString(text_to_save1);
+                        text_to_save1=text_to_save2;
+                        }
+                    current_entry=current_entry->next;
+                }
             }
-        }
+        fwrite(text_to_save1->text,1,text_to_save1->len,savefile);
         break;
     }
     default:{

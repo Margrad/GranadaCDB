@@ -10,6 +10,7 @@
 *.depend
 *.layout
 *.gcdb
+*.colgcdb
 GranadaCDB/bin/*
 GranadaCDB/obj/*
 

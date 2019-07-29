@@ -64,15 +64,13 @@ string* NewString(char *Text)
 string* concat_strings(string* a, string* b){
     char* new_text=(char *)malloc(sizeof(char)*(a->len+b->len+1));
     int i=0;
-    while(a->text[i]!='\0'){
+
+    for(i=0;i<a->len-1;i++){
         new_text[i]=a->text[i];
-        i++;
     }
     int j=0;
-    while(b->text[j]!='\0'){
+    for(j=0;j<b->len-1;i++,j++){
         new_text[i]=b->text[j];
-        i++;
-        j++;
     }
     new_text[i]='\0';
 
