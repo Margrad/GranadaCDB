@@ -24,7 +24,7 @@ int main(){
 
 
 
-    DataBase* DB=NewDB(DBName);
+    DataBase* DB = NewDB(DBName);
 
     AddTable(DB, TableName);
     MoveToTable(DB,TableName);
