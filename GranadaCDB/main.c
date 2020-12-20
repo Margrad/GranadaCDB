@@ -27,7 +27,7 @@ int main(){
     DataBase* DB=NewDB(DBName);
 
     AddTable(DB, TableName);
-    MoveToTable(DB,TableName);
+    MoveToTable(DB, TableName);
 
     CheckColumnsNames(DB->CurrentTable);
     AddColumn(DB->CurrentTable, ColumnName1, INTERGER);
